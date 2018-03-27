@@ -30,14 +30,6 @@ func callDocker(args ...string) int {
 			config.Environment["TF_LOG"] = "DEBUG"
 			config.Environment["TERRAGRUNT_DEBUG"] = "1"
 		}
-
-		// The log level option should not be supplied if there is no actual command
-		for _, arg := range args {
-			if !strings.HasPrefix(arg, "-") {
-				command = append(command, []string{logLevelArg, config.LogLevel}...)
-				break
-			}
-		}
 	}
 
 	if flushCache && filepath.Base(config.EntryPoint) == "terragrunt" {
@@ -281,7 +273,7 @@ var windowsMessage = `
 You may have to share your drives with your Docker virtual machine to make them accessible.
 
 On Windows 10+ using Hyper-V to run Docker, simply right click on Docker icon in your tray and
-choose "Settings", then go to "Shared Drives" and enable the share for the drives you want to 
+choose "Settings", then go to "Shared Drives" and enable the share for the drives you want to
 be accessible to your dockers.
 
 On previous version using VirtualBox, start the VirtualBox application and add shared drives
