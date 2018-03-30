@@ -202,10 +202,10 @@ func (config *TGFConfig) SetDefaultValues() {
 		}
 	}
 
-	config.SetValue(dockerImage, "coveo/tgf")
-	config.SetValue(dockerRefresh, "1h")
-	config.SetValue(loggingLevel, "notice")
-	config.SetValue(entryPoint, "terragrunt")
+  config.SetValue(dockerImage, "docker.nextgearcapital.com/nextgearcapital/terraform-docker")
+  config.SetValue(dockerRefresh, "1h")
+  config.SetValue(loggingLevel, "notice")
+  config.SetValue(entryPoint, "terragrunt")
 }
 
 // SetValue sets value of the key in the configuration only if it does not already have a value
