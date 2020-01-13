@@ -80,5 +80,5 @@ func PlatformZipURL(version string) string {
 	if name == "darwin" {
 		name = "macOS"
 	}
-	return fmt.Sprintf("https://github.com/coveo/tgf/releases/download/v%[1]s/tgf_%[1]s_%[2]s_64-bits.zip", version, name)
+	return fmt.Sprintf("https://github.com/nextgearcapital/tgf/releases/download/v%[1]s/tgf_%[1]s_%[2]s_64-bits.zip", version, name)
 }

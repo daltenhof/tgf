@@ -575,7 +575,7 @@ func (config *TGFConfig) GetUpdateVersion() (string, error) {
 		// hammering GitHub
 		return config.UpdateVersion, nil
 	}
-	resp, err := http.Get("https://api.github.com/repos/coveooss/tgf/releases/latest")
+	resp, err := http.Get("https://api.github.com/repos/nextgearcapital/tgf/releases/latest")
 	if err != nil {
 		return "", err
 	}

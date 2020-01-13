@@ -13,9 +13,9 @@ get_local_tgf_version () {
 
 get_latest_tgf_version () {
     TGF_LATEST_VERSION=$(curl --silent https://coveo-bootstrap-us-east-1.s3.amazonaws.com/tgf_version.txt)
-    
+
     if [ -z "$TGF_LATEST_VERSION" ]
-    then 
+    then
         echo "Could not obtain tgf latest version."
         exit 1
     fi
@@ -31,12 +31,12 @@ install_latest_tgf () {
     if [[ $(uname -s) == Linux ]]
     then
         echo 'Installing latest tgf version for Linux in' $TGF_PATH '...'
-        curl -sL "https://github.com/coveooss/tgf/releases/download/v"$TGF_LATEST_VERSION"/tgf_"$TGF_LATEST_VERSION"_linux_64-bits.zip" | gzip -d > $TGF && chmod +x $TGF && script_end
+        curl -sL "https://github.com/nextgearcapital/tgf/releases/download/v"$TGF_LATEST_VERSION"/tgf_"$TGF_LATEST_VERSION"_linux_64-bits.zip" | gzip -d > $TGF && chmod +x $TGF && script_end
     elif [[ $(uname -s) == Darwin ]]
     then
         echo 'Installing latest tgf for OSX in' $TGF_PATH '...'
-        curl -sL "https://github.com/coveooss/tgf/releases/download/v"$TGF_LATEST_VERSION"/tgf_"$TGF_LATEST_VERSION"_macOS_64-bits.zip" | bsdtar -xf- -C $TGF_PATH && script_end
-    else 
+        curl -sL "https://github.com/nextgearcapital/tgf/releases/download/v"$TGF_LATEST_VERSION"/tgf_"$TGF_LATEST_VERSION"_macOS_64-bits.zip" | bsdtar -xf- -C $TGF_PATH && script_end
+    else
         echo 'OS not supported.'
         exit 1
     fi
@@ -49,7 +49,7 @@ echo '- tgf version (local):' $TGF_LOCAL_VERSION
 echo '- tgf version (latest):' $TGF_LATEST_VERSION
 
 if [[ $TGF_LOCAL_VERSION == $TGF_LATEST_VERSION ]]
-then 
+then
     echo 'Local version is up to date.'
 else
     install_latest_tgf
