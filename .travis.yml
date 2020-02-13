@@ -1,34 +1,27 @@
 language: go
+
 go:
-- 1.9.x
+  - 1.13.x
 
-sudo: required
+env:
+  - GO111MODULE=on CGO_ENABLED=0
 
-services:
-- docker
+sudo: false
 
 before_install:
-- if [ ${TRAVIS_TAG::6} = image- ];
-  then
-    docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-  fi
+  - GO111MODULE=off go get github.com/mattn/goveralls
 
-install:
-- if [ ${TRAVIS_TAG::1} = v ];
-  then
-    go get github.com/Masterminds/glide &&
-    glide install;
-  fi
+before_script:
+  - go test ./...
 
 script:
-- if [ ${TRAVIS_TAG::6} = image- ];
-  then
-    bash make_dockers.sh;
-  fi
-- if [ ${TRAVIS_TAG::1} = v ];
-  then
-    curl -sL https://git.io/goreleaser | bash /dev/stdin $@;
-  fi
+  - if [ "${TRAVIS_TAG::1}" = "v" ]; then
+    git diff;
+    curl -sL https://git.io/goreleaser | bash;
+    fi
+
+after_success:
+  - make coveralls
 
 notifications:
   email: false
