@@ -17,7 +17,7 @@ or install it through command line:
 On `OSX`:
 
 ```bash
-curl -sL https://github.com/nextgearcapital/tgf/releases/download/v1.22.0-NGC/tgf_1.22.0-NGC_linux_64-bits.zip | bsdtar -xf- -C /usr/local/bin
+curl -sL https://github.com/nextgearcapital/tgf/releases/download/v1.22.0-NGC/tgf_1.22.0-NGC_macOS_64-bits.zip | bsdtar -xf- -C /usr/local/bin
 ```
 
 On `Linux`:
